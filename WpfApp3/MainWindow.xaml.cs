@@ -31,38 +31,21 @@ namespace WpfApp3
         public MainWindow()
         {
             InitializeComponent();
-            var lessons = new List<CoachLesson>
+            FrameworkElement.StyleProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata
             {
-                new CoachLesson
-                {
-                    Title = "Math",
-                    Date  = DateTime.Now.ToString(),
-                    Price = 1000
-                },
-                 new CoachLesson
-                {
-                    Title = "English",
-                    Date  = DateTime.Now.ToString(),
-                    Price = 2000
-                },
-                  new CoachLesson
-                {
-                    Title = "Physics",
-                    Date  = DateTime.Now.ToString(),
-                    Price = 3000
-                },
-                   new CoachLesson
-                {
-                    Title = "Chemistry",
-                    Date  = DateTime.Now.ToString(),
-                    Price = 4000
-                },
-
-            };
-
-            listAnimals.ItemsSource = lessons;
+                DefaultValue = FindResource(typeof(Window))
+            });
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtBoxFirstName.Text;
+            string surname = txtBoxSecondName.Text;
+
+            if(name!="" && surname!="")
+            {
+                lblOutput.Content = "Бонжур, " + name + " " + surname+"!";
+            }
+        }
     }
 }
